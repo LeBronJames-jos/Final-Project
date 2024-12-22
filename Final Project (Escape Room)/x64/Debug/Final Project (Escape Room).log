@@ -1,0 +1,10 @@
+﻿  Source.cpp
+C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(53,16): warning C4552: '+': result of expression not used
+C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(54,18): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(135,13): warning C4552: '+': result of expression not used
+C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(136,15): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(160,14): warning C4552: '+': result of expression not used
+C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(178,7): error C2601: 'YCR': local function definitions are illegal
+      C:\Users\jover\source\repos\Final Project (Escape Room)\Final Project (Escape Room)\Source.cpp(126,1):
+      this line contains a '{' which has not yet been matched
+  
