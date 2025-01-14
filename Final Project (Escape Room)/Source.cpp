@@ -3,9 +3,20 @@
 #include <string>
 
 using namespace std;
-void YR(int& cardCount, bool &DRT, bool &coolDRT, bool &yellowTaken, string &userResponse, string &userYN);
+void YR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN);
+
 void FullDesk(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN);
+
 void YCR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN);
+
+void Y(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN);
+
+void CR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN);
+
+void R(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN);
+
+void FullCab(int& cardcount, bool& purpleTaken, bool& CCT, string& userResponse, string& userYN);
+
 int main()
 {
 	std::cout << "Welcome to the escape room!";
@@ -16,6 +27,8 @@ int main()
 	bool DRT = false;
 	bool coolDRT = false;
 	bool yellowTaken = false;
+	bool purpleTaken = false;
+	bool CCT = false;
 	string userResponse;
 	string userYN;
 
@@ -23,10 +36,10 @@ int main()
 	do
 	{
 		//ask user where they want to go
-		cout << "Where do you want to go: Desk, Cabinet, Painting, Drawer, Shelf or Check your pocket I guess (Choose 1) : ";
+		cout << "Where do you want to go: Desk (1), Cabinet (2), Painting (3), Drawer(4), Shelf(5) or Check your pocket I guess(6) (Choose 1) : ";
 		userResponse.clear();
 		cin >> userResponse;
-		if (userResponse == "Desk")
+		if (userResponse == "1")
 		{
 			//ask if they want to open desk
 			cout << "Open desk? (Yes/No)";
@@ -36,84 +49,51 @@ int main()
 			{
 				FullDesk(cardCount, DRT, coolDRT, yellowTaken, userResponse, userYN);
 			}
+
 			else if (userYN == "Yes" && DRT == true && coolDRT == false && yellowTaken == false)
 			{
-				void YCR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN);
+				YCR(cardCount, DRT,coolDRT, yellowTaken,  userResponse, userYN);
 			}
-			else if (userYN == "Yes" && DRT == true && coolDRT == false && yellowTaken == false)
+
+			else if (userYN == "Yes" && DRT == true && coolDRT == true && yellowTaken == false)
 			{
-				//YCard
-				cout << "Left in the desk is a yellow 4 playing card (PLEASE TYPE THE FULL NAME OF THE ITEM)" << endl;
-				cout << "What do you take?: ";
-				userResponse.clear();
-				cin >> userResponse;
-				if (userResponse == "yellow 4 playing card" && yellowTaken == false)
-				{
-					cout << "I guess it could be useful" << endl;
-					cardCount + 1;
-					yellowTaken == true;
-				}
-				else
-				{
-					cout << "Please enter a valid item" << endl;
-				}
+				Y(cardCount, DRT, coolDRT, yellowTaken, userResponse, userYN);
 			}
+
 			else if (userYN == "Yes" && coolDRT == true && DRT == false && yellowTaken == false)
 			{
 				YR(cardCount, DRT, coolDRT, yellowTaken, userResponse, userYN);
 			}
+
 			else if (userYN == "Yes" && coolDRT == false && DRT == true && yellowTaken == true)
 			{
-				//Cool rock
-				cout << "Left in the desk is a cool rock (PLEASE TYPE THE FULL NAME OF THE ITEM)" << endl;
-				cout << "What do you take?: ";
-				userResponse.clear();
-				cin >> userResponse;
-				if (userResponse == "cool rock")
-				{
-					cout << "cool." << endl;
-					coolDRT = true;
-				}
-				else
-				{
-					cout << "Please enter a valid item" << endl;
-				}
+				CR(cardCount, DRT, coolDRT, yellowTaken, userResponse, userYN);
 			}
+
 			else if (userYN == "Yes" && coolDRT == true && DRT == false && yellowTaken == true)
 			{
-				//rock
-				if (userResponse == "rock")
-				{
-					cout << "Why?" << endl;
-					coolDRT = true;
-				}
-				else
-				{
-					cout << "Please enter a valid item" << endl;
-				}
+				R(cardCount, DRT, coolDRT, yellowTaken, userResponse, userYN);
 			}
 			else if (userYN == "Yes" && coolDRT == true && DRT == true && yellowTaken == true)
 			{
 				cout << "The desk is empty.";
 			}
+			else if (userYN == "No")
+			{
+				cout << "well then why are you looking at it?" << endl;
+			}
 		}
 		// cabinet
-		if (userResponse == "Cabinet")
+		if (userResponse == "2")
 		{
 			cout << "Open cabinet? (Yes/No)";
 			userYN.clear();
 			cin >> userYN;
-			if (userYN == "Yes")
+			if (userYN == "Yes" && CCT == false && purpleTaken == false)
 			{
-				cout << "Inside the cabinet there is a purple 2 playing card and a glass cup" << endl;
-				cout << "What do you take:";
-				userResponse.clear();
-				cin >> userResponse;
-				if (userResponse == "purple 2 playing card")
-				{
-
-				}
+				void FullCab(int& cardCount, bool& purpleTaken, bool& CCT, string & userResponse, string & userYN);
 			}
+
 		}
 
 	} while (cardCount < 6);
@@ -121,23 +101,21 @@ int main()
 	return 0;
 
 }
-
-void YR(int &cardCount, bool &DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYn)
+/*desk part*/
+void YR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYn, bool& purpleTaken, bool& CCT)// YCard + rock
 {
-
-	// YCard + rock
-	cout << "Left in the desk is a yellow 4 playing card(1) and a rock(2)" << endl;
-	cout << "What do you take?: ";
+	std::cout << "Left in the desk is a yellow 4 playing card(1) and a rock(2)" << endl;
+	std::cout << "What do you take?: ";
 	cin >> userResponse;
 	if (userResponse == "1" && yellowTaken == false)
 	{
-		cout << "I guess it could be useful" << endl;
+		std::cout << "I guess it could be useful" << endl;
 		cardCount + 1;
 		yellowTaken == true;
 	}
 	else if (userResponse == "2" == DRT == false)
 	{
-		cout << "Why?" << endl;
+		std::cout << "Why?" << endl;
 		DRT = true;
 	}
 	else
@@ -145,57 +123,127 @@ void YR(int &cardCount, bool &DRT, bool& coolDRT, bool& yellowTaken, string& use
 		cout << "Please enter a valid item" << endl;
 	}
 
-	void FullDesk(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN);
+void FullDesk(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN); //full desk
+{
+	
+	userResponse.clear();
+	cout << "In the desk you find a yellow 4 playing card(1), a rock(2) and a cool rock(3) " << endl;
+	cout << "What do you take?: ";
+	cin >> userResponse;
+
+
+	if (userResponse == "1" && yellowTaken == false)
 	{
-		//full desk
-		userResponse.clear();
-		cout << "In the desk you find a yellow 4 playing card(1), a rock(2) and a cool rock(3) "<< endl;
-		cout << "What do you take?: ";
-		cin >> userResponse;
-
-
-		if (userResponse == "1" && yellowTaken == false)
-		{
-			cout << "I guess it could be useful" << endl;
-			cardCount + 1;
-			yellowTaken = true;
-		}
-		else if (userResponse == "2" && DRT == false)
-		{
-			cout << "Why?" << endl;
-			DRT = true;
-		}
-		else if (userResponse == "3" && coolDRT == false)
-		{
-			cout << "cool." << endl;
-			coolDRT = true;
-		}
-		else
-		{
-			cout << "Please enter a valid item" << endl;
-		}
+		cout << "I guess it could be useful" << endl;
+		cardCount + 1;
+		yellowTaken = true;
 	}
-	void YCR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN);
+	else if (userResponse == "2" && DRT == false)
 	{
-		//YCard + cool rock
-		cout << "Left in the desk is a yellow 4 playing card(1) and a cool rock(2) " << endl;
-		cout << "What do you take?: ";
-		userResponse.clear();
-		cin >> userResponse;
-		if (userResponse == "1" && yellowTaken == false)
-		{
-			cout << "I guess it could be useful" << endl;
-			cardCount + 1;
-			yellowTaken = true;
-		}
-		else if (userResponse == "2" && coolDRT == false)
-		{
-			cout << "cool." << endl;
-			coolDRT = true;
-		}
-		else
-		{
-			cout << "Please enter a valid item" << endl;
-		}
+		cout << "Why?" << endl;
+		DRT = true;
+	}
+	else if (userResponse == "3" && coolDRT == false)
+	{
+		cout << "cool." << endl;
+		coolDRT = true;
+	}
+	else
+	{
+		cout << "Please enter a valid item" << endl;
+	}
+}
+void YCR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN); //YCard + cool rock
+{
+	
+	cout << "Left in the desk is a yellow 4 playing card(1) and a cool rock(2) " << endl;
+	cout << "What do you take?: ";
+	userResponse.clear();
+	cin >> userResponse;
+	if (userResponse == "1" && yellowTaken == false)
+	{
+		cout << "I guess it could be useful" << endl;
+		cardCount + 1;
+		yellowTaken = true;
+	}
+	else if (userResponse == "2" && coolDRT == false)
+	{
+		cout << "cool." << endl;
+		coolDRT = true;
+	}
+	else
+	{
+		cout << "Please enter a valid item" << endl;
+	}
+}
+void Y(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN);//YCard
+{
+	
+	cout << "Left in the desk is a yellow 4 playing card(1)" << endl;
+	cout << "What do you take?: ";
+	userResponse.clear();
+	cin >> userResponse;
+	if (userResponse == "1" && yellowTaken == false)
+	{
+		cout << "I guess it could be useful" << endl;
+		cardCount + 1;
+		yellowTaken == true;
+	}
+	else
+	{
+		cout << "Please enter a valid item" << endl;
+	}
+}
+void CR(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string & userResponse, string & userYN); //Cool rock
+{
+	
+	std::cout << "Left in the desk is a cool rock(1)" << endl;
+	std::cout << "What do you take?: ";
+	userResponse.clear();
+	cin >> userResponse;
+	if (userResponse == "1")
+	{
+		std::cout << "cool." << endl;
+		coolDRT = true;
+	}
+	else
+	{
+		std::cout << "Please enter a valid item" << endl;
+	}
+}
+void R(int& cardCount, bool& DRT, bool& coolDRT, bool& yellowTaken, string& userResponse, string& userYN); //rock
+{
+	
+	if (userResponse == "rock")
+	{
+		std::cout << "Why?" << endl;
+		coolDRT = true;
+	}
+	else
+	{
+		std::cout << "Please enter a valid item" << endl;
+	}
+}
+
+void FullCab(int& cardCount, bool& purpleTaken, bool& CCT, string& userResponse, string& userYN);
+{
+	
+	cout << "Inside the cabinet there is a purple 2 playing card(1) and a glass cup(2)" << endl;
+	cout << "What do you take:";
+	userResponse.clear();
+	cin >> userResponse;
+
+
+	if (userResponse == "1" && purpleTaken == false)
+	{
+		cout << "Kinda weird that there's conviently colored cards in hidden places..." << endl;
+		purpleTaken = true;
+		cardCount + 1;
+		
+	}
+	else if(userResponse == "2" && CCT == false)
+	{
+		cout << "I guess you're thirsty?" << endl;
+		CCT = true;
 	}
 }
